@@ -14,7 +14,7 @@ const AbuseDetector = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('http://127.0.0.1:8000/detect-abuse', { conversation });
+      const response = await axios.post('/detect-abuse', { conversation });
       setResult(response.data);
     } catch (err) {
       setError('Failed to analyze conversation.');
