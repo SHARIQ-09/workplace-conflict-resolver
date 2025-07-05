@@ -3,6 +3,7 @@ import axios from 'axios';
 import TextArea from './TextArea';
 import AnalyzeButton from './AnalyzeButton';
 import ResultsDisplay from './ResultsDisplay';
+import { detectAbuse } from './api/abuseApi';
 
 const AbuseDetector = () => {
   const [conversation, setConversation] = useState('');
@@ -14,7 +15,7 @@ const AbuseDetector = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('/detect-abuse', { conversation });
+      const response = await detectAbuse(conversation);
       setResult(response.data);
     } catch (err) {
       setError('Failed to analyze conversation.');
