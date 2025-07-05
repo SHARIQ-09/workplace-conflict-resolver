@@ -3,7 +3,7 @@ import axios from 'axios';
 import TextArea from './TextArea';
 import AnalyzeButton from './AnalyzeButton';
 import ResultsDisplay from './ResultsDisplay';
-import { detectAbuse } from './api/abuseApi';
+import { detectAbuse } from '../api/abuseApi';
 
 const AbuseDetector = () => {
   const [conversation, setConversation] = useState('');
