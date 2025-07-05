@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://workplace-abuse.onrender.com';
+const API_URL = 'https://workplace-abuse.onrender.com/api';
 
 export const detectAbuse = async (conversation) => {
   try {

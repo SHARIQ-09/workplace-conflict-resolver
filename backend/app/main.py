@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException ,APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.schemas.abuse import AbuseRequest, AbuseResponse
@@ -28,14 +28,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Create a separate API router under /api
+api_router = APIRouter()
 
-@app.get("/")
+@api_router.get("/")
 def root():
     return {"message": "Abuse Detection API is running."}
 
 
 
-@app.post("/detect-abuse", response_model=AbuseResponse)
+
+@api_router.post("/detect-abuse", response_model=AbuseResponse)
 def detect_abuse_endpoint(request: AbuseRequest):
     try:
         result = detect_abuse(request.conversation)
@@ -47,6 +50,9 @@ def detect_abuse_endpoint(request: AbuseRequest):
         print("❌ Internal Error:", str(e))
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+    
+# ✅ Include API router at /api
+app.include_router(api_router, prefix="/api")
 
 # Correct relative path from backend/app/main.py to frontend/dist:
 dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../frontend/dist'))
