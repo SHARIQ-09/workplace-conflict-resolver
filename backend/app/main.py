@@ -19,11 +19,6 @@ def clean_json_response(response: str) -> str:
         response = response[:-3].strip()
     return response
 
-# Correct relative path from backend/app/main.py to frontend/dist:
-dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../frontend/dist'))
-# ✅ Mount the Frontend (this serves your built React app)
-app.mount("/", StaticFiles(directory=dist_path, html=True), name="static")
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -53,4 +48,8 @@ def detect_abuse_endpoint(request: AbuseRequest):
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
+# Correct relative path from backend/app/main.py to frontend/dist:
+dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../frontend/dist'))
+# ✅ Mount the Frontend (this serves your built React app)
+app.mount("/", StaticFiles(directory=dist_path, html=True), name="static")
 
