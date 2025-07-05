@@ -16,7 +16,7 @@ const AbuseDetector = () => {
     setError('');
     try {
       const response = await detectAbuse(conversation);
-      setResult(response.data);
+      setResult(response);
     } catch (err) {
       setError('Failed to analyze conversation.');
     } finally {
