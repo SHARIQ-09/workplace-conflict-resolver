@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { detectConflict, generateEmailDraft } from '../api/conflictApi';
+import { detectConflict, generateEmailDraft } from '../api/ConflictApi';
 import TextArea from './TextArea';
 import AnalyzeButton from './AnalyzeButton';
 import ResultsDisplay from './ResultsDisplay';
