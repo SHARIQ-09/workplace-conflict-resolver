@@ -1,9 +1,9 @@
-import AbuseDetector from './components/AbuseDetector';
+import ConflictDetector from './components/ConflictDetector';
 
 function App() {
   return (
     <div className="App">
-      <AbuseDetector />
+      <ConflictDetector />
     </div>
   );
 }

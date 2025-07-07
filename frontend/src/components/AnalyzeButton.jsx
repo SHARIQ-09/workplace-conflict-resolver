@@ -4,7 +4,7 @@ const AnalyzeButton = ({ onClick, loading }) => (
     onClick={onClick}
     disabled={loading}
   >
-    {loading ? 'Analyzing...' : 'Analyze Conversation'}
+    {loading ? 'Prospective solutions on the way..' : 'Solve my Conflict'}
   </button>
 );
 export default AnalyzeButton;
