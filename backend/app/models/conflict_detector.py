@@ -43,7 +43,7 @@ def detect_conflict(conversation: str):
             {"role": "system", "content": "You are a workplace conflict resolution expert."},
             {"role": "user", "content": prompt}
         ],
-        model="llama3-70b-8192",  # You can change model if needed
+        model="llama-3.3-70b-versatile",  # You can change model if needed
         temperature=0,
     )
 
@@ -59,3 +59,4 @@ def detect_conflict(conversation: str):
         raise ValueError("Model response is not valid JSON")
     
     return response_json
+
